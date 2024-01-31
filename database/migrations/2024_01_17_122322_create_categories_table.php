@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('namekz');
-            $table->string('nameru');
-            $table->string('nameen');
+            $table->string('title');
+            $table->string('code', 5);
             $table->timestamps();
         });
     }
