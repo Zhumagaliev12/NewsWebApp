@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>Create Post</title>
+    <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </head>
 <body>
     <a href=" {{ route('posts.index') }} ">Go to index page</a>   <br><br>
