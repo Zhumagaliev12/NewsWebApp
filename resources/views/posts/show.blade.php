@@ -10,7 +10,7 @@
 
 
     <div class="container">
-        <a href=" {{ route('posts.index') }} " class="btn btn-primary mt-2">Go to index page</a>
+        <a href=" {{ route('posts.index') }} " class="btn btn-primary mt-2">Back</a>
         <div class="mt-2">
         <h3>{{$post->title}}</h3>
         <p>{{$post->content}}</p>

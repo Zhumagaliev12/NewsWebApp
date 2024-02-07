@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -17,18 +18,20 @@ class MyClassController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $allCategories = Category::all();
+        return view('posts.create', ['categories'=>$allCategories]);
     }
 
 
     public function store(Request $request)
     {
-        Post::create([
-            'title' => $request->title,
-            'content' => $request->input('content'),
-            'is_published' => $request->is_published
-        ]);
-        return redirect()->route('posts.index');
+        dd($request);
+//        Post::create([
+//            'title' => $request->title,
+//            'content' => $request->input('content'),
+//            'is_published' => $request->is_published
+//        ]);
+//        return redirect()->route('posts.index');
     }
 
 

@@ -6,7 +6,7 @@
     <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </head>
 <body>
-<a href=" {{ route('posts.index') }} " class="btn btn-primary m-3 ">Go to index page</a>   <br><br>
+<a href=" {{ route('posts.show' , $post->id) }} " class="btn btn-primary m-3 ">Back</a>   <br><br>
 
 <form action="{{ route('posts.update', $post->id) }}" method="post">
     @csrf
