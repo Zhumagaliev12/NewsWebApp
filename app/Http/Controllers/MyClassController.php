@@ -9,6 +9,7 @@ use Illuminate\Routing\Route;
 
 class MyClassController extends Controller
 {
+
     public function index()
     {
         $allPosts = Post::all();
@@ -25,13 +26,14 @@ class MyClassController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
-//        Post::create([
-//            'title' => $request->title,
-//            'content' => $request->input('content'),
-//            'is_published' => $request->is_published
-//        ]);
-//        return redirect()->route('posts.index');
+//        dd($request);
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->input('content'),
+            'is_published' => $request->is_published,
+            'category_id' =>$request->category_id
+        ]);
+        return redirect()->route('posts.index');
     }
 
 
@@ -43,6 +45,9 @@ class MyClassController extends Controller
 
     public function edit(Post $post)
     {
+
+//        $title = Category::all($post->category_id);
+//        dd($title);
         return view('posts.edit',['post' => $post]);
     }
 
@@ -52,6 +57,7 @@ class MyClassController extends Controller
         $post->update([
             'title'=> $request->input('title'),
             'content'=> $request->input('content'),
+            'category_id' =>$request->input('category_id'),
         ]);
         return redirect()->route('posts.index');
     }
@@ -62,6 +68,16 @@ class MyClassController extends Controller
         $post->delete();
         return redirect()->route('posts.index');
     }
+
+    //for test, how to get posts by category
+
+//    public function cat(Category $cat)
+//    {
+////        dd($cat);
+//        $posts = $cat->posts()->get()->toArray();
+////        dd($posts);
+//        return view('posts.cat', ['posts' => $posts]);
+//    }
 }
 
 

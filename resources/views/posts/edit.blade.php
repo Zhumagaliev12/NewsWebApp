@@ -14,6 +14,9 @@
     Title: <input type="text" name="title" value="{{$post->title}}"><br><br>
     Content: <textarea name="content" cols="30" rows="10">{{$post->content}}</textarea><br><br>
     <input type="hidden" value="1" name="is_published">
+{{--    <select name="category_id" class="form-control mb-3 w-auto">--}}
+{{--            <option selected value="{{$post->id}}">{{$post->title}}</option>--}}
+{{--    </select>--}}
     <button type="submit" class="btn btn-info">Edit post</button>
 </form>
 </body>
