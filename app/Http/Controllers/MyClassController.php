@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\DB;
 
 class MyClassController extends Controller
 {
@@ -45,10 +46,16 @@ class MyClassController extends Controller
 
     public function edit(Post $post)
     {
+        $categories = Category::all();
+        $category = Category::all()->where('id', $post->category_id);
+
+//        $category = DB::table('categories')
+//            ->select('title')
+//            ->where('id', $post->category_id);
 
 //        $title = Category::all($post->category_id);
 //        dd($title);
-        return view('posts.edit',['post' => $post]);
+        return view('posts.edit',['post' => $post, 'category' => $category, 'categories'=>$categories]);
     }
 
 

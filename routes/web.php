@@ -15,7 +15,7 @@ Route::get('main', 'App\Http\Controllers\MainController@index')->name('main.inde
 Route::get('about', 'App\Http\Controllers\AboutController@index')->name('main.about');
 Route::get('contact', 'App\Http\Controllers\ContactController@index')->name('main.contact');
 
-Route::get('posts/category/{cat}', 'App\Http\Controllers\MyClassController@cat');
+//Route::get('posts/category/{cat}', 'App\Http\Controllers\MyClassController@cat');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
