@@ -14,14 +14,18 @@ class MyClassController extends Controller
     public function index()
     {
         $allPosts = Post::all();
-        return view('posts.index', ['posts'=>$allPosts]);
+        return view('posts.index', ['posts'=>$allPosts, 'categories'=> Category::all()]);
+    }
+
+    public function postsByCategory(Category $category)
+    {
+        return view('posts.index', ['posts' => $category->posts, 'categories'=>Category::all()]);
     }
 
 
     public function create()
     {
-        $allCategories = Category::all();
-        return view('posts.create', ['categories'=>$allCategories]);
+        return view('posts.create', ['categories'=>Category::all()]);
     }
 
 
@@ -46,16 +50,7 @@ class MyClassController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = Category::all();
-        $category = Category::all()->where('id', $post->category_id);
-
-//        $category = DB::table('categories')
-//            ->select('title')
-//            ->where('id', $post->category_id);
-
-//        $title = Category::all($post->category_id);
-//        dd($title);
-        return view('posts.edit',['post' => $post, 'category' => $category, 'categories'=>$categories]);
+        return view('posts.edit',['post' => $post, 'categories' => Category::all()]);
     }
 
 
@@ -75,6 +70,8 @@ class MyClassController extends Controller
         $post->delete();
         return redirect()->route('posts.index');
     }
+
+
 
     //for test, how to get posts by category
 

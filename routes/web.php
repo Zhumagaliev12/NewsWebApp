@@ -10,6 +10,7 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', MyClassController::class);
+Route::get('posts/category/{category}', 'App\Http\Controllers\MyClassController@postsByCategory')->name('posts.category');
 
 Route::get('main', 'App\Http\Controllers\MainController@index')->name('main.index');
 Route::get('about', 'App\Http\Controllers\AboutController@index')->name('main.about');

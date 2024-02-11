@@ -20,9 +20,8 @@
     <input type="hidden" value="1" name="is_published">
 
     <select name="category_id" class="form-control mb-3 w-auto">
-        <option selected>{{$category->title}}</option>
         @foreach($categories as $cat)
-            <option value="{{$cat->id}}">{{$cat->title}}</option>
+            <option @if($cat->id == $post->category_id) selected @endif value="{{$cat->id}}">{{$cat->title}}</option>
         @endforeach
     </select>
 

@@ -7,6 +7,7 @@
     <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </head>
 <body>
+
     <div class="container py-3">
         <nav class="row">
             <ul class="nav nav-pills nav-fill">
@@ -21,27 +22,30 @@
                 </li>
 
             </ul>
+        <div>
 
-{{--            <li>--}}
-{{--                <ul style="display: inline"><a href=" {{ route('main.index') }} ">Main</a></ul>--}}
-{{--                <ul style="display: inline"><a href=" {{ route('main.about') }} ">About Us</a></ul>--}}
-{{--                <ul style="display: inline"><a href=" {{ route('main.contact') }} ">Contact</a></ul>--}}
-{{--                <ul style="display: inline"><a href=" {{ route('posts.create') }} ">Create Post</a></ul>--}}
-{{--            </li>--}}
 
-        </nav>
-    </div>
-
-{{--    <a href=" {{ route('posts.create') }} ">Go to create page</a>--}}
+        <div class="col col-3 ">
+            <a href="{{route('posts.index')}}">All posts</a>
+            @foreach($categories as $cat)
+                <a href="{{route('posts.category', $cat->id)}}" >{{$cat->title}}</a>
+            @endforeach
+        </div>
     <div class="container mt-4">
+
         <button class="btn btn-info mb-3">
             <a href="{{ route('posts.create') }}" style="text-decoration: none;" > Create Post </a>
         </button>
+
+{{--        {{dd($posts)}}--}}
+
         @foreach($posts as $post)
             <a href="{{route('posts.show', $post->id)}}"><h3>{{$post->title}}</h3></a>
             <p>{{$post->content}}</p>
         @endforeach
     </div>
+
+
 
 
 </body>

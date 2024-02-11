@@ -9,9 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'is_published']; //column-ge jazba saqtauga ruksat alady
+    protected $fillable = ['title', 'content', 'is_published', 'category_id']; //column-ge jazba saqtauga ruksat alady
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
