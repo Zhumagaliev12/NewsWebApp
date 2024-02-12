@@ -1,16 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main page</title>
-    <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-</head>
-<body>
-
-
+@extends('posts.layouts.main')
+@section('content')
     <div class="container">
-        <a href=" {{ route('posts.index') }} " class="btn btn-primary mt-2">Back</a>
         <div class="mt-2">
         <h3>{{$post->title}}</h3>
         <p>{{$post->content}}</p>
@@ -23,8 +13,24 @@
         </form>
     </div>
 
+    <div class="card-body py-1 mt-2" style="width: 300px">
+        <form action="" method="post">
+            <div>
+                <label for="comment" class="visually-hidden"></label>
+                <textarea class="form-control form-control-sm border border-2 rounded-1"
+                          id="comment" style="height: 50px"  placeholder="Add a comment..."
+                          minlength="3" maxlength="255" required>
+                </textarea>
+            </div>
+            <footer class="card-footer bg-transparent border-0 text-end">
+{{--                <button class="btn btn-link btn-sm me-2 text-decoration-none">Cancel</button>--}}
+                <button type="submit" class="btn btn-primary btn-sm">Add comment</button>
+            </footer>
+        </form>
+    </div>
+
+@endsection
 
 
 
-</body>
-</html>
+

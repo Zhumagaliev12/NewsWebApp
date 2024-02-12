@@ -40,8 +40,17 @@
 {{--        {{dd($posts)}}--}}
 
         @foreach($posts as $post)
-            <a href="{{route('posts.show', $post->id)}}"><h3>{{$post->title}}</h3></a>
-            <p>{{$post->content}}</p>
+{{--            <a href="{{route('posts.show', $post->id)}}"><h3>{{$post->title}}</h3></a>--}}
+{{--            <p>{{$post->content}}</p>--}}
+
+            <div class="card mb-3" style="width: 25rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{$post->title}}</h5>
+                    <p class="card-text">{{$post->content}}</p>
+                    <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">Read post</a>
+                </div>
+            </div>
         @endforeach
     </div>
 
