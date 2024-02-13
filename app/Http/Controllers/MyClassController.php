@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -39,6 +40,16 @@ class MyClassController extends Controller
             'category_id' =>$request->category_id
         ]);
         return redirect()->route('posts.index');
+    }
+
+    public function commentStore(Request $request)
+    {
+//        dd($request);
+        Comment::create([
+            'content' => $request->input('content'),
+            'post_id' => $request->input('post_id')
+        ]);
+        return redirect()->route('posts.show', $request->input('post_id'));
     }
 
 
