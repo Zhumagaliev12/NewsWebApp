@@ -32,7 +32,6 @@ class MyClassController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request);
         Post::create([
             'title' => $request->title,
             'content' => $request->input('content'),
@@ -42,20 +41,9 @@ class MyClassController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function commentStore(Request $request)
-    {
-//        dd($request);
-        Comment::create([
-            'content' => $request->input('content'),
-            'post_id' => $request->input('post_id')
-        ]);
-        return redirect()->route('posts.show', $request->input('post_id'));
-    }
-
-
     public function show(Post $post)
     {
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post, 'comments' => Comment::all()]);
     }
 
 
@@ -82,17 +70,6 @@ class MyClassController extends Controller
         return redirect()->route('posts.index');
     }
 
-
-
-    //for test, how to get posts by category
-
-//    public function cat(Category $cat)
-//    {
-////        dd($cat);
-//        $posts = $cat->posts()->get()->toArray();
-////        dd($posts);
-//        return view('posts.cat', ['posts' => $posts]);
-//    }
 }
 
 
