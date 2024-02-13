@@ -34,29 +34,26 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 @foreach($comments as $comment)
-                <div class="card">
-                    <div class="card-body">
-                        <img src="">
-                        <div>
-                            <h6 class="fw-bold text-primary mb-1">Ghost</h6>
-                            <p class="text-muted small mb-0"> Shared publicly -  {{$comment->created_at}} </p>
+                    @if($comment->post_id == $post->id)
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="">
+                                <div>
+                                    <h6 class="fw-bold text-primary mb-1">Ghost</h6>
+                                    <p class="text-muted small mb-0"> Shared publicly -  {{$comment->created_at}} </p>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-4 pb-2">{{$comment->content}}</p>
+                            <div class="small d-flex justify-content-start">
+                                <p class="mb-0">{{$comment->likes}}</p>
+                            <form action="{{route('comment.destroy', $comment->id)}}" method="post">
+                                @csrf
+                                <input name="post_id" value="{{$post->id}}" type="hidden">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                            </div>
                         </div>
-                    </div>
-                    <p class="mt-3 mb-4 pb-2">{{$comment->content}}</p>
-                    <div class="small d-flex justify-content-start">
-                        <a href="#!" class="d-flex align-items-center">
-                            <i class="far fa-thumbs-up"></i>
-                            <p class="mb-0">{{$comment->likes}}</p>
-                        </a>
-
-                        <form action="{{route('comment.destroy', $comment->id)}}" method="post">
-                            @csrf
-                            <input name="post_id" value="{{$post->id}}" type="hidden">
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
-
-                    </div>
-                </div>
+                    @endif
                 @endforeach
             </div>
         </div>
