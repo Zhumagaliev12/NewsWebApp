@@ -1,16 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Edit Post</title>
-    <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-</head>
-<body>
-
-{{--    {{dd($post->category_id)}}--}}
-{{--    {{dd($category)}}--}}
-
-<a href=" {{ route('posts.show' , $post->id) }} " class="btn btn-primary m-3 ">Back</a>   <br><br>
+@extends('posts.layouts.main')
+@section('content')
 
 <form action="{{ route('posts.update', $post->id) }}" method="post">
     @csrf
@@ -27,5 +16,5 @@
 
     <button type="submit" class="btn btn-info">Edit post</button>
 </form>
-</body>
-</html>
+
+@endsection
