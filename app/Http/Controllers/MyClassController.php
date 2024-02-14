@@ -32,13 +32,15 @@ class MyClassController extends Controller
 
     public function store(Request $request)
     {
-        Post::create([
-            'title' => $request->title,
-            'content' => $request->input('content'),
-            'is_published' => $request->is_published,
-            'category_id' =>$request->category_id
+        $validated =  $request->validate([
+           'title' => 'required|max:255',
+           'content' => 'required',
+           'is_published' => 'required|numeric',
+           'category_id' => 'required|numeric|exists:categories,id',
         ]);
-        return redirect()->route('posts.index');
+
+        Post::create($validated);
+        return redirect()->route('posts.index')->with('message', 'Post was created succesfully!');
     }
 
     public function show(Post $post)
@@ -55,12 +57,15 @@ class MyClassController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $post->update([
-            'title'=> $request->input('title'),
-            'content'=> $request->input('content'),
-            'category_id' =>$request->input('category_id'),
+        $validated =  $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'is_published' => 'required|numeric',
+            'category_id' => 'required|numeric|exists:categories,id',
         ]);
-        return redirect()->route('posts.index');
+
+        $post->update($validated);
+        return redirect()->route('posts.index')->with('message', 'Post updated succesfully!');
     }
 
 

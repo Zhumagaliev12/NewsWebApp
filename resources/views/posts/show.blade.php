@@ -7,6 +7,7 @@
                 <article>
                     <header class="mb-4">
                         <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
+                        <div class="text-muted fst-italic mb-2">Author:</div>
                         <div class="text-muted fst-italic mb-2">{{$post->created_at}}</div>
 
 {{--                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>--}}
