@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Test;
 
-use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
+use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {

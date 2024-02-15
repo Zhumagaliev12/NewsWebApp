@@ -24,7 +24,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('posts')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('likes');
+            $table->unsignedBigInteger('likes')->nullable();
             $table->timestamps();
         });
     }

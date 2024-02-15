@@ -36,6 +36,7 @@ class MyClassController extends Controller
            'title' => 'required|max:255',
            'content' => 'required',
            'is_published' => 'required|numeric',
+           'user_id' => 'required|numeric',
            'category_id' => 'required|numeric|exists:categories,id',
         ]);
 

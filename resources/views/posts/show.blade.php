@@ -1,4 +1,4 @@
-@extends('posts.layouts.main')
+@extends('layouts.app')
 @section('content')
 
     <div class="container mt-3">
@@ -7,7 +7,11 @@
                 <article>
                     <header class="mb-4">
                         <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
-                        <div class="text-muted fst-italic mb-2">Author:</div>
+
+                        @foreach(\App\Models\User::all() as $user)
+                            <div class="text-muted fst-italic mb-2"> @if($user->id == $post->user_id) Author: {{$user->name}} @endif</div>
+                        @endforeach
+
                         <div class="text-muted fst-italic mb-2">{{$post->created_at}}</div>
 
 {{--                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>--}}
@@ -17,12 +21,16 @@
                     <section class="mb-5">
                         <p class="fs-5 mb-4">{{$post->content}}</p>
                     </section>
+
+                    @if(\Illuminate\Support\Facades\Auth::user()->id == $post->user_id)
                     <a  href="{{route('posts.edit', $post->id)}} " class="btn btn-info mt-2">Edit</a>
                     <form action="{{route('posts.destroy',$post->id)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger mt-2">Delete</button>
                     </form>
+                    @endif
+
                 </article>
                 <section class="my-5">
                         <div class="card bg-light col-lg-8">
@@ -38,6 +46,7 @@
                                 <footer class="card-footer bg-transparent border-0 text-end">
                                     <button type="submit" class="btn btn-primary btn-sm">Add comment</button>
                                 </footer>
+
                             </form>
                         </div>
                         <div class="card-body mt-2" style="width: 500px">
@@ -49,14 +58,22 @@
                                             <div class="d-flex m-3">
                                                 <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                                 <div class="ms-3">
-                                                    <div class="fw-bold">Commenter Name</div>
+
+                                                    @foreach(\App\Models\User::all() as $user)
+                                                        <div class="fw-bold">@if($user->id == $comment->user_id) {{$user->name}} @endif </div>
+                                                    @endforeach
+
                                                     <p>{{$comment->content}}</p>
                                                 </div>
                                                 <div class="m-auto">
                                                     <form action="{{route('comment.destroy', $comment->id)}}" method="post">
                                                         @csrf
                                                         <input name="post_id" value="{{$post->id}}" type="hidden">
+
+                                                        @if(\Illuminate\Support\Facades\Auth::user()->id == $comment->user_id)
                                                         <button class="btn btn-danger mb-1" type="submit">Delete</button>
+                                                        @endif
+
                                                     </form>
                                                 </div>
                                             </div>

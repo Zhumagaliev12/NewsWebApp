@@ -1,5 +1,7 @@
-@extends('posts.layouts.main')
+@extends('layouts.app')
 @section('content')
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -37,6 +39,7 @@
                     </div>
 
                     <input type="hidden" value="1" name="is_published">
+                    <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" name="user_id">
 
                     <div class="form-group mt-2">
                         <button type="submit" class="btn btn-success">Create post</button>
