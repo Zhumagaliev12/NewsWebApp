@@ -7,7 +7,13 @@ Route::get('/', function () {
     return Route::redirect('posts.index');
 });
 
-Route::resource('posts', MyClassController::class);
+Route::middleware('auth')->group(function (){
+    Route::resource('posts', MyClassController::class)->except('index', 'show');
+    Route::post('/logout', [App\Http\Controllers\Auth2\LoginController::class, 'logout'])->name('logout');
+});
+
+Route::resource('posts', MyClassController::class)->only('index', 'show');
+
 Route::get('posts/category/{category}', 'App\Http\Controllers\MyClassController@postsByCategory')->name('posts.category');
 Route::post('comment/show', 'App\Http\Controllers\CommentController@commentStore')->name('show.comment');
 Route::post('comments/destroy/{id}', 'App\Http\Controllers\CommentController@commentDestroy')->name('comment.destroy');
@@ -26,5 +32,5 @@ Route::post('/register', [App\Http\Controllers\Auth2\RegisterController::class, 
 
 Route::get('/login', [App\Http\Controllers\Auth2\LoginController::class, 'index'])->name('login.form');
 Route::post('/login', [App\Http\Controllers\Auth2\LoginController::class, 'login'])->name('login');
-Route::post('/logout', [App\Http\Controllers\Auth2\LoginController::class, 'logout'])->name('logout');
+
 

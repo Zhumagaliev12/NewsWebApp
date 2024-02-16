@@ -4,23 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
     public function commentStore(Request $request)
     {
-        Comment::create([
-            'content' => $request->input('content'),
-            'post_id' => $request->input('post_id')
+        $validated = $request->validate([
+            'content' => 'required',
+            'post_id' => 'required|numeric|exists:posts,id'
         ]);
 
-        return redirect()->route('posts.show', $request->input('post_id'));
+        Auth::user()->comments()->create($validated);
+
+        return back()->with('message', 'Comment was created!');
     }
 
-    public function commentDestroy(Comment $id, Request $request)
+    public function commentDestroy(Comment $id)
     {
+//        dd($comment);
         $id->delete();
-        return redirect()->route('posts.show', ['post'=>$request->input('post_id')]);
+//        return redirect()->route('posts.show', ['post'=>$request->input('post_id')]);
+        return back()->with('message', 'Comment was deleted!');
     }
 }

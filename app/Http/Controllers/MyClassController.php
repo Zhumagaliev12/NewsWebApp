@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MyClassController extends Controller
@@ -14,6 +16,7 @@ class MyClassController extends Controller
 
     public function index()
     {
+//        $allPosts = Post::with('comments.user')->get();
         $allPosts = Post::all();
         return view('posts.index', ['posts'=>$allPosts, 'categories'=> Category::all()]);
     }
@@ -36,17 +39,20 @@ class MyClassController extends Controller
            'title' => 'required|max:255',
            'content' => 'required',
            'is_published' => 'required|numeric',
-           'user_id' => 'required|numeric',
            'category_id' => 'required|numeric|exists:categories,id',
         ]);
 
-        Post::create($validated);
+//        Post::create($validated + ['user_id' => Auth::user()->id]);
+
+        Auth::user()->posts()->create($validated);
+
         return redirect()->route('posts.index')->with('message', 'Post was created succesfully!');
     }
 
     public function show(Post $post)
     {
-        return view('posts.show', ['post' => $post, 'comments' => Comment::all()]);
+        $post->load('comments.user');
+        return view('posts.show', ['post' => $post]);
     }
 
 

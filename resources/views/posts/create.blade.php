@@ -39,7 +39,7 @@
                     </div>
 
                     <input type="hidden" value="1" name="is_published">
-                    <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" name="user_id">
+{{--                    <input type="hidden" value="{{Auth::user()->id}}" name="user_id">--}}
 
                     <div class="form-group mt-2">
                         <button type="submit" class="btn btn-success">Create post</button>
