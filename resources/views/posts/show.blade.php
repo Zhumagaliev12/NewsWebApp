@@ -16,8 +16,7 @@
                         <p class="fs-5 mb-4">{{$post->content}}</p>
                     </section>
 
-                    @auth()
-                        @if($post->user->id == $post->user_id)
+                        @if(Auth::user()->id == $post->user_id)
                             <a  href="{{route('posts.edit', $post->id)}} " class="btn btn-info mt-2">Edit</a>
                             <form action="{{route('posts.destroy',$post->id)}}" method="post">
                                 @csrf
@@ -25,7 +24,6 @@
                                 <button type="submit" class="btn btn-danger mt-2">Delete</button>
                             </form>
                         @endif
-                    @endauth
 
 
                 </article>
@@ -60,7 +58,7 @@
                                                 <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                                 <div class="ms-3">
 
-{{--                                                    <div class="fw-bold">{{$comment->user->name}}</div>--}}
+                                                    <div class="fw-bold">{{$comment->user->name}}</div>
                                                     <p>{{$comment->content}}</p>
                                                     <small>{{$comment->created_at}}</small>
 
@@ -85,12 +83,7 @@
                                        @endif
                                   @endforeach
 
-{{--                                    @foreach($post->comments as $comment)--}}
 
-{{--                                        <p>{{$comment->user->name}}</p>--}}
-{{--                                        <p>{{$comment->created_at}}</p>--}}
-{{--                                        <p>{{$comment->content}}</p>--}}
-{{--                                    @endforeach--}}
 
                                 </div>
                             </div>
