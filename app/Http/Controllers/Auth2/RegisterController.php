@@ -18,7 +18,6 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-//        dd(Role::where('name', 'user')->first()->id);
 
         $request->validate([
            'name' => 'required|max:255|',
