@@ -24,10 +24,14 @@ Route::get('about', 'App\Http\Controllers\Test\AboutController@index')->name('ma
 Route::get('contact', 'App\Http\Controllers\Test\ContactController@index')->name('main.contact');
 
 //Auth::routes();
-Route::middleware('hasrole:admin')->group(function (){
-   Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
-   Route::get('/admin/posts', [AdminController::class, 'showPosts'])->name('admin.posts');
-});
+
+//Route::middleware('hasrole:admin')->group(function (){
+//   Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
+//   Route::get('/admin/posts', [AdminController::class, 'showPosts'])->name('admin.posts');
+//});
+
+Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
+Route::get('/admin/posts', [AdminController::class, 'showPosts'])->name('admin.posts');
 
 Route::get('/register', [App\Http\Controllers\Auth2\RegisterController::class, 'index'])->name('register.form');
 Route::post('/register', [App\Http\Controllers\Auth2\RegisterController::class, 'register'])->name('register');

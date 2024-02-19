@@ -11,13 +11,17 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class MyClassController extends Controller
 {
 
     public function index()
     {
+//        $this->authorize('viewAny');
+
 //        $allPosts = Post::with('comments.user')->get();
-        $allPosts = Post::all();
+
+        $allPosts = Post::paginate(3);
         return view('posts.index', ['posts'=>$allPosts, 'categories'=> Category::all()]);
     }
 

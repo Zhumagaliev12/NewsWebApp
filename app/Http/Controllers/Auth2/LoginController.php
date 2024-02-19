@@ -28,7 +28,8 @@ class LoginController extends Controller
 
         if (Auth::attempt($validated)){
             if (Auth::user()->role->name == "admin"){
-                return redirect()->intended('/admin/users');
+//                return redirect()->intended('/admin/users');
+                return redirect()->intended('/posts');
             }
             return redirect()->intended('/posts');
         }
