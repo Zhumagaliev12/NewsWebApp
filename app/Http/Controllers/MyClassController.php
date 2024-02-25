@@ -55,6 +55,7 @@ class MyClassController extends Controller
 
     public function show(Post $post)
     {
+//        $this->authorize('view', $post);
         $post->load('comments.user');
         return view('posts.show', ['post' => $post]);
     }

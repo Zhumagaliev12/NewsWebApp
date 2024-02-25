@@ -16,14 +16,28 @@
                         <p class="fs-5 mb-4">{{$post->content}}</p>
                     </section>
 
-                        @if(Auth::user()->id == $post->user_id)
+{{--                    @can('view', $post)--}}
+{{--                        @if(Auth::user()->id == $post->user_id)--}}
+{{--                            <a  href="{{route('posts.edit', $post->id)}} " class="btn btn-info mt-2">Edit</a>--}}
+{{--                            <form action="{{route('posts.destroy',$post->id)}}" method="post">--}}
+{{--                                @csrf--}}
+{{--                                @method('DELETE')--}}
+{{--                                <button type="submit" class="btn btn-danger mt-2">Delete</button>--}}
+{{--                            </form>--}}
+{{--                        @endif--}}
+{{--                    @endcan--}}
+
+                    @can('view', $post)
+{{--                        @if(Auth::user()->id == $post->user_id)--}}
                             <a  href="{{route('posts.edit', $post->id)}} " class="btn btn-info mt-2">Edit</a>
                             <form action="{{route('posts.destroy',$post->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger mt-2">Delete</button>
                             </form>
-                        @endif
+{{--                        @endif--}}
+                    @endcan
+
 
 
                 </article>
@@ -77,6 +91,9 @@
                                                                 <button class="btn btn-danger mb-1" type="submit">Delete</button>
                                                             @endif
                                                         </form>
+
+
+
                                                     </div>
                                                 @endauth
                                             </div>
