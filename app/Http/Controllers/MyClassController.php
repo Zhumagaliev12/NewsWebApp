@@ -57,7 +57,29 @@ class MyClassController extends Controller
     {
 //        $this->authorize('view', $post);
         $post->load('comments.user');
-        return view('posts.show', ['post' => $post]);
+
+        $myRating = 0;
+        if (Auth::check()){
+            $postRated = Auth::user()->postsRated()->where('post_id', $post->id)->first();
+            if ($postRated != null){
+                $myRating = $postRated->pivot->rating;
+            }
+        }
+
+
+        $avgRating = 0;
+        $sum = 0;
+        $ratedUsers = $post->usersRated()->get();
+
+        foreach ($ratedUsers as $ru){
+            $sum += $ru->pivot->rating;
+        }
+
+        if (count($ratedUsers)>0){
+            $avgRating = $sum / count($ratedUsers);
+        }
+
+        return view('posts.show', ['post' => $post, 'myRating' => $myRating, 'avgRating' => $avgRating]);
     }
 
 
@@ -87,6 +109,24 @@ class MyClassController extends Controller
         return redirect()->route('posts.index');
     }
 
+    public function rate(Post $post, Request $request)
+    {
+//        dd($request);
+        $validated =  $request->validate([
+            'rating' => 'required|numeric|min:1|max:6',
+        ]);
+
+        $postRated = Auth::user()->postsRated()->where('post_id', $post->id)->first();
+        if($postRated != null){
+            Auth::user()->postsRated()->updateExistingPivot($post->id, ['rating' => $request->input('rating')]);
+        }
+        else{
+            Auth::user()->postsRated()->attach($post->id, ['rating' => $request->input('rating')]);
+        }
+
+
+        return back();
+    }
 }
 
 

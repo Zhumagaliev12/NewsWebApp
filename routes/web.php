@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function (){
     Route::get('posts/category/{category}', 'App\Http\Controllers\MyClassController@postsByCategory')->name('posts.category');
     Route::post('comment/show', 'App\Http\Controllers\CommentController@commentStore')->name('show.comment');
     Route::post('comments/destroy/{id}', 'App\Http\Controllers\CommentController@commentDestroy')->name('comment.destroy');
+    Route::post('posts/{post}/rate', 'App\Http\Controllers\MyClassController@rate')->name('posts.rate');
 
     Route::prefix('admin')->as('admin.')->group(function (){
         Route::get('/users', [AdminController::class, 'showUsers'])->name('users');

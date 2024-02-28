@@ -50,6 +50,13 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function postsRated()
+    {
+        return $this->belongsToMany(Post::class)
+            ->withPivot('rating')
+            ->withTimestamps();
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
