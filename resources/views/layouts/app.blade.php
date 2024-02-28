@@ -52,6 +52,8 @@
                     @auth()
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
                                                 href="{{ route('posts.create') }}">Create post</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                                href="###">My posts</a></li>
                     @endauth
 
                     @guest

@@ -21,7 +21,7 @@ class MyClassController extends Controller
 
 //        $allPosts = Post::with('comments.user')->get();
 
-        $allPosts = Post::paginate(3);
+        $allPosts = Post::where('is_published', 2)->get();
         return view('posts.index', ['posts'=>$allPosts, 'categories'=> Category::all()]);
     }
 
