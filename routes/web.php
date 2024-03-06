@@ -19,13 +19,18 @@ Route::middleware('auth')->group(function (){
     Route::post('posts/{post}/rate', 'App\Http\Controllers\MyClassController@rate')->name('posts.rate');
 
     Route::prefix('admin')->as('admin.')->group(function (){
+
         Route::get('/users', [AdminController::class, 'showUsers'])->name('users');
         Route::get('/users/search', [AdminController::class, 'showUsers'])->name('users.search');
         Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.edit');
         Route::put('/users/{user}', [AdminController::class, 'update'])->name('users.update');
         Route::put('/users/{user}/ban', [AdminController::class, 'ban'])->name('users.ban');
         Route::put('/users/{user}/unban', [AdminController::class, 'unban'])->name('users.unban');
+
         Route::get('/posts', [AdminController::class, 'showPosts'])->name('posts');
+        Route::get('/posts/search', [AdminController::class, 'showPosts'])->name('posts.search');
+        Route::put('/posts/{post}/publish', [AdminController::class, 'publish'])->name('posts.publish');
+        Route::put('/posts/{post}/unpublish', [AdminController::class, 'unpublish'])->name('posts.unpublish');
     });
 
     Route::get('main', 'App\Http\Controllers\Test\MainController@index')->name('main.index');

@@ -43,9 +43,9 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('posts.index')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span>User page</span></a>
         </li>
 
         <!-- Divider -->
@@ -84,6 +84,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
+                    <a class="collapse-item" href="{{route('admin.posts')}}">Posts</a>
                     <a class="collapse-item" href="utilities-color.html">Categories</a>
                     <a class="collapse-item" href="utilities-border.html">Comments</a>
 
@@ -160,25 +161,25 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form action="{{route('admin.users.search')}}" method="get"
-                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small"
-                               @if($search)
-                                   placeholder="{{$search}}"
-                               @else
-                                   placeholder="Search for ..."
-                               @endif
+{{--                <form action="{{route('admin.users.search')}}" method="get"--}}
+{{--                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <input type="text" class="form-control bg-light border-0 small"--}}
+{{--                               @if($search)--}}
+{{--                                   placeholder="{{$search}}"--}}
+{{--                               @else--}}
+{{--                                   placeholder="Search for ..."--}}
+{{--                               @endif--}}
 
 
-                               aria-label="Search" aria-describedby="basic-addon2" name="search">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+{{--                               aria-label="Search" aria-describedby="basic-addon2" name="search">--}}
+{{--                        <div class="input-group-append">--}}
+{{--                            <button class="btn btn-primary" type="submit">--}}
+{{--                                <i class="fas fa-search fa-sm"></i>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
