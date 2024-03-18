@@ -1,12 +1,12 @@
 @extends('layouts.adm')
 
 @section('content')
-    <h4>USERS PAGE</h4>
+    <h4>POSTS:</h4>
 
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">№</th>
             <th scope="col">Title</th>
             <th scope="col">Content</th>
             <th scope="col">Category</th>

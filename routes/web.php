@@ -31,6 +31,13 @@ Route::middleware('auth')->group(function (){
         Route::get('/posts/search', [AdminController::class, 'showPosts'])->name('posts.search');
         Route::put('/posts/{post}/publish', [AdminController::class, 'publish'])->name('posts.publish');
         Route::put('/posts/{post}/unpublish', [AdminController::class, 'unpublish'])->name('posts.unpublish');
+
+        Route::get('/categories', [AdminController::class, 'showCategories'])->name('categories');
+        Route::post('/categories', [AdminController::class, 'storeCategory'])->name('category.store');
+
+        Route::get('/roles', [AdminController::class, 'showRoles'])->name('roles');
+        Route::post('/roles', [AdminController::class, 'storeRole'])->name('role.store');
+
     });
 
     Route::get('main', 'App\Http\Controllers\Test\MainController@index')->name('main.index');

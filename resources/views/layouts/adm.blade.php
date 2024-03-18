@@ -68,7 +68,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item active" href="{{route('admin.users.search')}}">Users</a>
-                    <a class="collapse-item" href="cards.html">Roles</a>
+                    <a class="collapse-item" href="{{route('admin.roles')}}">Roles</a>
                 </div>
             </div>
         </li>
@@ -85,7 +85,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
                     <a class="collapse-item" href="{{route('admin.posts')}}">Posts</a>
-                    <a class="collapse-item" href="utilities-color.html">Categories</a>
+                    <a class="collapse-item" href="{{route('admin.categories')}}">Categories</a>
                     <a class="collapse-item" href="utilities-border.html">Comments</a>
 
                 </div>

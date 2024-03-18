@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -41,6 +43,18 @@ class AdminController extends Controller
         return view('admin.posts', ['posts'=> $posts]);
     }
 
+    public function showCategories()
+    {
+        $categories = Category::all();
+        return view('admin.categories',['categories' => $categories]);
+    }
+
+    public function showRoles()
+    {
+        $roles = Role::all();
+        return view('admin.roles',['roles' => $roles]);
+    }
+
     public function ban(User $user)
     {
         $user->update([
@@ -73,6 +87,27 @@ class AdminController extends Controller
         return back();
     }
 
+    public function storeRole(Request $request)
+    {
+        $validated =  $request->validate([
+            'name' => 'required|max:255',
+        ]);
 
+        Role::create($validated);
+
+        return redirect()->route('admin.roles')->with('message', 'Role was created succesfully!');
+    }
+
+    public function storeCategory(Request $request)
+    {
+        $validated =  $request->validate([
+            'title' => 'required|max:255',
+            'code' => 'required|max:255',
+        ]);
+
+        Category::create($validated);
+
+        return redirect()->route('admin.categories')->with('message', 'Category was created succesfully!');
+    }
 
 }
