@@ -117,4 +117,11 @@ class AdminController extends Controller
             ->with('message','Role was deleted successfully');
     }
 
+    public function destroyCategory(Category $category)
+    {
+        $category->delete();
+        return redirect()->route('admin.categories')
+            ->with('message','Category was deleted successfully');
+    }
+
 }

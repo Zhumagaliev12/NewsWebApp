@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function (){
 
         Route::get('/categories', [AdminController::class, 'showCategories'])->name('categories');
         Route::post('/categories', [AdminController::class, 'storeCategory'])->name('category.store');
+        Route::delete('/categories/{category}', [AdminController::class, 'destroyCategory'])->name('category.destroy');
 
         Route::get('/roles', [AdminController::class, 'showRoles'])->name('roles');
         Route::post('/roles', [AdminController::class, 'storeRole'])->name('role.store');

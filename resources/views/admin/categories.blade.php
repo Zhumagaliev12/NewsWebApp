@@ -25,7 +25,13 @@
                 <th scope="row">{{$i+1}}</th>
                 <td>{{$categories[$i]->title}}</td>
                 <td>{{$categories[$i]->code}}</td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td>
+                    <form action="{{route('admin.category.destroy', $categories[$i]->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
 {{--                <td>--}}
 {{--                    <form action="--}}
 {{--                    @if($posts[$i]->is_published == 1)--}}
