@@ -110,4 +110,11 @@ class AdminController extends Controller
         return redirect()->route('admin.categories')->with('message', 'Category was created succesfully!');
     }
 
+    public function destroyRole(Role $role)
+    {
+       $role->delete();
+        return redirect()->route('admin.roles')
+            ->with('message','Role was deleted successfully');
+    }
+
 }

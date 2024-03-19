@@ -22,9 +22,15 @@
             <tr>
                 <th scope="row">{{$i+1}}</th>
                 <td>{{$roles[$i]->name}}</td>
+
                 <td>
-                    <button class="btn btn-danger">Delete</button>
+                    <form action="{{route('admin.role.destroy', $roles[$i]->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
+
                 {{--                <td>--}}
                 {{--                    <form action="--}}
                 {{--                    @if($posts[$i]->is_published == 1)--}}

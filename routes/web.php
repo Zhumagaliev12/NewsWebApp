@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function (){
 
         Route::get('/roles', [AdminController::class, 'showRoles'])->name('roles');
         Route::post('/roles', [AdminController::class, 'storeRole'])->name('role.store');
+        Route::delete('/roles/{role}', [AdminController::class, 'destroyRole'])->name('role.destroy');
 
     });
 
