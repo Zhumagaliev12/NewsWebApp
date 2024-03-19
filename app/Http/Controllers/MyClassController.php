@@ -50,7 +50,7 @@ class MyClassController extends Controller
 
         Auth::user()->posts()->create($validated);
 
-        return redirect()->route('posts.index')->with('message', 'Post was created succesfully!');
+        return redirect()->route('posts.index')->with('message', 'Post was created succesfully, appear when the moderator confirms!');
     }
 
     public function show(Post $post)
@@ -127,6 +127,22 @@ class MyClassController extends Controller
 
         return back();
     }
+
+    public function showMyPosts()
+    {
+//        dd(Auth::user()->id);
+//        $myPosts = Post::with('usersRated')->where('user_id', Auth::user()->id)->get();
+//        dd($myPosts);
+        $myPosts = Post::where('user_id', Auth::user()->id)->get();
+//        dd($myPosts);
+
+//
+
+        return view('posts.myPosts', ['myPosts' => $myPosts]);
+
+
+    }
+
 }
 
 

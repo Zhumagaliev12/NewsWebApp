@@ -28,7 +28,7 @@
                     <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{$cat->title}}</a>
                 @endforeach
             @if(Auth::user()->role->name == 'admin')
-                        <a class="nav-link mx-2" href="{{route('admin.users')}}">Admin</a>
+                        <a class="nav-link mx-2 " href="{{route('admin.users')}}"><button class="btn btn-info">Admin</button></a>
             @endif
 
 {{--                @can('view', auth()->user())--}}
@@ -53,7 +53,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
                                                 href="{{ route('posts.create') }}">Create post</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                href="###">My posts</a></li>
+                                                href="{{route('posts.showMyPosts')}}">My posts</a></li>
                     @endauth
 
                     @guest

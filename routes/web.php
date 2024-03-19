@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function (){
     Route::post('comment/show', 'App\Http\Controllers\CommentController@commentStore')->name('show.comment');
     Route::post('comments/destroy/{id}', 'App\Http\Controllers\CommentController@commentDestroy')->name('comment.destroy');
     Route::post('posts/{post}/rate', 'App\Http\Controllers\MyClassController@rate')->name('posts.rate');
+    Route::get('posts/myPosts', 'App\Http\Controllers\MyClassController@showMyPosts')->name('posts.showMyPosts');
 
     Route::prefix('admin')->as('admin.')->group(function (){
 
