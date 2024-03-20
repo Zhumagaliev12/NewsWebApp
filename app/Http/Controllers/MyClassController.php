@@ -134,7 +134,10 @@ class MyClassController extends Controller
 //        $myPosts = Post::with('usersRated')->where('user_id', Auth::user()->id)->get();
 //        dd($myPosts);
         $myPosts = Post::where('user_id', Auth::user()->id)->get();
-//        dd($myPosts);
+
+//        $rating = $myPosts[0]->usersRated()->pivot->get();
+////        dd($myPosts);
+//        dd($rating[0]->pivot->rating);
 
 //
 
