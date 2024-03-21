@@ -1,7 +1,7 @@
 @extends('layouts.adm')
 
 @section('content')
-    <h4>USERS:</h4>
+    <h4>Users:</h4>
 
     <table class="table">
         <thead>

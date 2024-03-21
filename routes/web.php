@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function (){
         Route::post('/roles', [AdminController::class, 'storeRole'])->name('role.store');
         Route::delete('/roles/{role}', [AdminController::class, 'destroyRole'])->name('role.destroy');
 
+        Route::get('/comments', [AdminController::class, 'showComments'])->name('comments');
     });
 
     Route::get('main', 'App\Http\Controllers\Test\MainController@index')->name('main.index');

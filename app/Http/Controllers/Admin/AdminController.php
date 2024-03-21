@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
@@ -122,6 +123,11 @@ class AdminController extends Controller
         $category->delete();
         return redirect()->route('admin.categories')
             ->with('message','Category was deleted successfully');
+    }
+
+    public function showComments()
+    {
+        return view('admin.comments', ['comments' => Comment::all()]);
     }
 
 }
