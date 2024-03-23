@@ -13,7 +13,7 @@
             <div class="col-lg-8">
                 @foreach($posts as $post)
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <a href="#!"><img class="card-img-top" src="{{$post->image}}"/></a>
                         <div class="card-body">
                             <div class="small text-muted">{{$post->created_at}}</div>
                             <h2 class="card-title">{{$post->title}}</h2>

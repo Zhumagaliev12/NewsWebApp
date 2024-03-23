@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <form action="{{ route('posts.store') }}" method="post">
+                <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group mt-2">
@@ -25,6 +25,7 @@
                     </div>
 
 
+
                     <div class="form-group mt-2">
                         <label for="categoryInput">Category</label>
                         <select class="form-control" name="category_id" id="categoryInput">
@@ -34,6 +35,14 @@
                             @endforeach
                         </select>
                         @error('category_id')
+                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="fileInput">Image</label>
+                        <input type="file" class="form-control" id="fileInput" name="image">
+                        @error('image')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>

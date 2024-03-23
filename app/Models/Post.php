@@ -14,6 +14,7 @@ class Post extends Model
         'content',
         'is_published',
         'category_id',
+        'image',
         'user_id']; //column-ge jazba saqtauga ruksat alady
 
     public function category()

@@ -44,11 +44,19 @@ class MyClassController extends Controller
            'content' => 'required',
            'is_published' => 'required|numeric',
            'category_id' => 'required|numeric|exists:categories,id',
+           'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:10000|dimensions:min_width=100,min_height=100,max_width=3000,max_height=3000',
         ]);
 
-//        Post::create($validated + ['user_id' => Auth::user()->id]);
+        $fileName = time().$request->file('image')->getClientOriginalName();
+//        dd($fileName);
+        $image_path = $request->file('image')->storeAs('posts', $fileName, 'public');
+//        dd($image_path);
+        $validated['image'] = '/storage/'.$image_path;
+//       dd($validated);
 
-        Auth::user()->posts()->create($validated);
+        Post::create($validated + ['user_id' => Auth::user()->id]);
+
+//        Auth::user()->posts()->create($validated);
 
         return redirect()->route('posts.index')->with('message', 'Post was created succesfully, appear when the moderator confirms!');
     }
