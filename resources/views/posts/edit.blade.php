@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <form action="{{ route('posts.update', $post->id) }}" method="post">
+                <form action="{{ route('posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -37,6 +37,20 @@
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    <div class="form-group mt-2">
+                        <label for="fileInput">Image</label>
+                        <input type="file" class="form-control" id="fileInput" name="image">
+                        @error('image')
+                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    @if($post->image)
+                        <div class="form-group mt-2">
+                            <label for="currentImage">Current Image</label><br>
+                            <img src="{{ $post->image }}" id="currentImage" alt="Current Image" style="max-width: 300px;">
+                        </div>
+                    @endif
 
                     <div class="form-group mt-2">
                         <button type="submit" class="btn btn-info">Edit post</button>

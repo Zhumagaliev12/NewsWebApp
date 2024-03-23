@@ -27,7 +27,8 @@ class MyClassController extends Controller
 
     public function postsByCategory(Category $category)
     {
-        return view('posts.index', ['posts' => $category->posts, 'categories'=>Category::all()]);
+        $posts = $category->posts()->where('is_published', 2)->get();
+        return view('posts.index', ['posts' => $posts, 'categories'=>Category::all()]);
     }
 
 
@@ -54,9 +55,9 @@ class MyClassController extends Controller
         $validated['image'] = '/storage/'.$image_path;
 //       dd($validated);
 
-        Post::create($validated + ['user_id' => Auth::user()->id]);
+//        Post::create($validated + ['user_id' => Auth::user()->id]);
 
-//        Auth::user()->posts()->create($validated);
+        Auth::user()->posts()->create($validated);
 
         return redirect()->route('posts.index')->with('message', 'Post was created succesfully, appear when the moderator confirms!');
     }
@@ -64,6 +65,7 @@ class MyClassController extends Controller
     public function show(Post $post)
     {
 //        $this->authorize('view', $post);
+//        $post = Post::where('is_published', 2)->get();
         $post->load('comments.user');
 
         $myRating = 0;
@@ -104,7 +106,15 @@ class MyClassController extends Controller
             'content' => 'required',
             'is_published' => 'required|numeric',
             'category_id' => 'required|numeric|exists:categories,id',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:10000|dimensions:min_width=100,min_height=100,max_width=3000,max_height=3000',
         ]);
+
+        $fileName = time().$request->file('image')->getClientOriginalName();
+//        dd($fileName);
+        $image_path = $request->file('image')->storeAs('posts', $fileName, 'public');
+//        dd($image_path);
+        $validated['image'] = '/storage/'.$image_path;
+//       dd($validated);
 
         $post->update($validated);
         return redirect()->route('posts.index')->with('message', 'Post updated succesfully!');
