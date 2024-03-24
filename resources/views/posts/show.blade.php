@@ -3,7 +3,7 @@
 
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-10">
                 <article>
                     <header class="mb-4">
                         <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
@@ -12,7 +12,7 @@
                         <a class="badge bg-secondary text-decoration-none link-light"
                            href="#!">{{$post->category->title}}</a>
                     </header>
-                    <figure class="mb-4"><img class="img-fluid rounded"
+                    <figure class="mb-4"><img class="img-fluid rounded "
                                               src="{{$post->image}}"/>
                     </figure>
                     <section class="mb-2">
