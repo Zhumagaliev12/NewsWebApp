@@ -15,13 +15,27 @@ use Illuminate\Support\Facades\DB;
 class MyClassController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $allPosts = null;
+        if ($request->search)
+        {
+//            dd($request->search);
+            $allPosts = Post::where('title', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('content', 'LIKE', '%'.$request->search.'%')
+                ->where('is_published', 2)
+                ->get();
+        }
+        else
+        {
+            $allPosts = Post::where('is_published', 2)->get();
+        }
+
 //        $this->authorize('viewAny');
 
 //        $allPosts = Post::with('comments.user')->get();
 
-        $allPosts = Post::where('is_published', 2)->get();
+//        dd($allPosts);
         return view('posts.index', ['posts'=>$allPosts, 'categories'=> Category::all()]);
     }
 
@@ -45,7 +59,7 @@ class MyClassController extends Controller
            'content' => 'required',
            'is_published' => 'required|numeric',
            'category_id' => 'required|numeric|exists:categories,id',
-           'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:10000|dimensions:min_width=100,min_height=100,max_width=3000,max_height=3000',
+           'image' => 'required|image|mimes:jpeg,webp,jpg,png,gif|max:10000|dimensions:min_width=100,min_height=100,max_width=3000,max_height=3000',
         ]);
 
         $fileName = time().$request->file('image')->getClientOriginalName();
