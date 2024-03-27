@@ -57,17 +57,17 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>User management</span>
             </a>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item active" href="{{route('admin.users.search')}}">Users</a>
+                    <a class="collapse-item" href="{{route('admin.users')}}">Users</a>
                     <a class="collapse-item" href="{{route('admin.roles')}}">Roles</a>
                 </div>
             </div>
@@ -157,28 +157,28 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
-{{--                <form action="{{route('admin.users.search')}}" method="get"--}}
-{{--                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">--}}
-{{--                    <div class="input-group">--}}
-{{--                        <input type="text" class="form-control bg-light border-0 small"--}}
-{{--                               @if($search)--}}
-{{--                                   placeholder="{{$search}}"--}}
-{{--                               @else--}}
-{{--                                   placeholder="Search for ..."--}}
-{{--                               @endif--}}
+{{--                <!-- Topbar Search -->--}}
+                <form action="{{route('admin.users.search')}}" method="get"
+                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small"
+                               @if($search)
+                                   placeholder="{{$search}}"
+                               @else
+                                   placeholder="Search for ..."
+                               @endif
 
 
-{{--                               aria-label="Search" aria-describedby="basic-addon2" name="search">--}}
-{{--                        <div class="input-group-append">--}}
-{{--                            <button class="btn btn-primary" type="submit">--}}
-{{--                                <i class="fas fa-search fa-sm"></i>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
+                               aria-label="Search" aria-describedby="basic-addon2" name="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
-                <!-- Topbar Navbar -->
+{{--                <!-- Topbar Navbar -->--}}
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -431,6 +431,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 </body>
 

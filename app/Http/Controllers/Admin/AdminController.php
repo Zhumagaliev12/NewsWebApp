@@ -31,9 +31,10 @@ class AdminController extends Controller
     {
         $posts = null;
         if ($request->search){
-            $posts = User::where('name', 'LIKE', '%'.$request->search.'%')
+            $posts = Post::where('title', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('content', 'LIKE', '%'.$request->search.'%')
-                ->with('category')->get();
+                ->with('category')
+                ->get();
         }
         else{
             $posts = Post::with('category', 'user')->get();
@@ -41,11 +42,12 @@ class AdminController extends Controller
 
 //        $posts = Post::all();
 
-        return view('admin.posts', ['posts'=> $posts]);
+        return view('admin.posts', ['posts'=> $posts, 'search'=>$request->search]);
     }
 
     public function showCategories()
     {
+
         $categories = Category::all();
         return view('admin.categories',['categories' => $categories]);
     }

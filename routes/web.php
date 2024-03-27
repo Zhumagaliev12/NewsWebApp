@@ -3,11 +3,13 @@
 use App\Http\Controllers\MyClassController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\LangController;
 
 Route::get('', function () {
     return redirect('/posts');
 });
+
+Route::get('/lang/{lang}', [LangController::class, 'switchLang'])->name('switch.lang');
 
 Route::middleware('auth')->group(function (){
     Route::resource('posts', MyClassController::class)->except('index', 'show');

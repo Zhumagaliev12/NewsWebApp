@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\LangMiddleware;
 use App\Http\Middleware\UserStatusMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -38,6 +39,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\UserStatusMiddleware::class,
+            \App\Http\Middleware\LangMiddleware::class,
         ],
 
         'api' => [

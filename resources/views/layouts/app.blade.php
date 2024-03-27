@@ -27,14 +27,18 @@
                 @foreach(App\Models\Category::all() as $cat)
                     <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{$cat->title}}</a>
                 @endforeach
-            @if(Auth::user()->role->name == 'admin')
-                        <a class="nav-link mx-2 " href="{{route('admin.users')}}"><button class="btn btn-info">Admin</button></a>
-            @endif
+                @if(Auth::user()->role->name == 'admin')
+                    <a class="nav-link mx-2 " href="{{route('admin.users')}}">
+                        <button class="btn btn-info">Admin</button>
+                    </a>
+                @endif
 
-{{--                @can('view', auth()->user())--}}
-{{--                @endcan--}}
+                {{--                @can('view', auth()->user())--}}
+                {{--                @endcan--}}
 
             @endauth
+
+{{--            <h1>{{app()->getLocale()}}</h1>--}}
 
             {{--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
             {{--                    <span class="navbar-toggler-icon"></span>--}}
@@ -56,16 +60,32 @@
                                                 href="{{route('posts.showMyPosts')}}">My posts</a></li>
                     @endauth
 
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{config('app.languages')[app()->getLocale()]}}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+{{--                            @dd(config('app.languages'));--}}
+                            @foreach(config('app.languages') as $ln => $lang)
+                                <a class="dropdown-item" href="{{route('switch.lang', $ln)}}">
+                                    {{$lang}}
+                                </a>
+                            @endforeach
+                        </div>
+                    </li>
+
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                             </li>
                         @endif
                     @else
