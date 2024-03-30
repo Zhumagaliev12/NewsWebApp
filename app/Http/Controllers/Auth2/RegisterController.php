@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'role_id' => Role::where('name', 'user')->first()->id,
+            'role_id' => Role::where('title_en', 'User')->first()->id,
         ]);
 
         Auth::login($user);

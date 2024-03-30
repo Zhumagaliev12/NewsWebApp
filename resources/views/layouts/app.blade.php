@@ -25,7 +25,7 @@
             </a>
             @auth()
                 @foreach(App\Models\Category::all() as $cat)
-                    <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{$cat->title}}</a>
+                    <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{$cat->{'title_'.app()->getLocale()} }}</a>
                 @endforeach
                 @if(Auth::user()->role->name == 'admin')
                     <a class="nav-link mx-2 " href="{{route('admin.users')}}">

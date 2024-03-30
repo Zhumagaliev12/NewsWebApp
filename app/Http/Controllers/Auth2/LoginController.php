@@ -27,7 +27,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($validated)){
-            if (Auth::user()->role->name == "admin"){
+            if (Auth::user()->role->title_en == "Admin"){
 //                return redirect()->intended('/admin/users');
                 return redirect()->intended('/posts');
             }
