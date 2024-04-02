@@ -28,4 +28,5 @@ return [
     'comments' => 'Комментарий',
     'isPublished' => 'Опубликован',
     'createdAt' => 'Создано',
+    'logout' => 'Выйти',
 ];

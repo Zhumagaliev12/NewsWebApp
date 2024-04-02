@@ -28,4 +28,5 @@ return [
     'comments' => 'Comments',
     'isPublished' => 'Is published',
     'createdAt' => 'Created at',
+    'logout' => 'Logout',
 ];

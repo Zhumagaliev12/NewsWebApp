@@ -28,5 +28,6 @@ return [
     'comments' => 'Пікірлер',
     'isPublished' => 'Жарияланды',
     'createdAt' => 'Құрылды',
+    'logout' => 'Шығу',
 
 ];
