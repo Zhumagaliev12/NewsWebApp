@@ -158,25 +158,25 @@
                 </button>
 
 {{--                <!-- Topbar Search -->--}}
-                <form action="{{route('admin.users.search')}}" method="get"
-                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small"
-                               @if($search)
-                                   placeholder="{{$search}}"
-                               @else
-                                   placeholder="Search for ..."
-                               @endif
+{{--                <form action="{{route('admin.users.search')}}" method="get"--}}
+{{--                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <input type="text" class="form-control bg-light border-0 small"--}}
+{{--                               @if($search)--}}
+{{--                                   placeholder="{{$search}}"--}}
+{{--                               @else--}}
+{{--                                   placeholder="Search for ..."--}}
+{{--                               @endif--}}
 
 
-                               aria-label="Search" aria-describedby="basic-addon2" name="search">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+{{--                               aria-label="Search" aria-describedby="basic-addon2" name="search">--}}
+{{--                        <div class="input-group-append">--}}
+{{--                            <button class="btn btn-primary" type="submit">--}}
+{{--                                <i class="fas fa-search fa-sm"></i>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
 
 {{--                <!-- Topbar Navbar -->--}}
                 <ul class="navbar-nav ml-auto">

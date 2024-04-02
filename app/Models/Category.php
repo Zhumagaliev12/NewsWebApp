@@ -15,7 +15,9 @@ class Category extends Model
     }
 
     protected $fillable = [
-        'title',
+        'title_kz',
+        'title_en',
+        'title_ru',
         'code',
     ];
 }

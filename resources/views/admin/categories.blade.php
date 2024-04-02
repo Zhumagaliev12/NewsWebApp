@@ -14,7 +14,9 @@
         <thead>
         <tr>
             <th scope="col">№</th>
-            <th scope="col">Title</th>
+            <th scope="col">Title_Kz</th>
+            <th scope="col">Title_En</th>
+            <th scope="col">Title_Ru</th>
             <th scope="col">Code</th>
             <th scope="col">Action</th>
         </tr>
@@ -23,7 +25,9 @@
         @for($i=0; $i<count($categories); $i++)
             <tr>
                 <th scope="row">{{$i+1}}</th>
-                <td>{{$categories[$i]->title}}</td>
+                <td>{{$categories[$i]->title_kz}}</td>
+                <td>{{$categories[$i]->title_en}}</td>
+                <td>{{$categories[$i]->title_ru}}</td>
                 <td>{{$categories[$i]->code}}</td>
                 <td>
                     <form action="{{route('admin.category.destroy', $categories[$i]->id)}}" method="post">
@@ -60,9 +64,12 @@
     <h4>Create new category</h4>
     <form action="{{route('admin.category.store')}}" method="post">
         @csrf
-        Title:<input type="text" name="title" placeholder="Type category...">
-        Code:<input type="text" name="code" placeholder="Type category code...">
-        <button class="btn btn-success" type="submit">Add category</button>
+            Title_Kz:<input type="text" name="title_kz" placeholder="Санатты енгізіңіз..."><br>
+            Title_En:<input class="mt-1" type="text" name="title_en" placeholder="Type category..."><br>
+            Title_Ru:<input class="mt-1" type="text" name="title_ru" placeholder="Введите категорию..."><br>
+            Code:<input class="mt-1" type="text" name="code" placeholder="Type category code..."><br>
+            <button class="btn btn-success mt-1" type="submit">Add category</button>
+
     </form>
 
 @endsection

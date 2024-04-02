@@ -26,8 +26,8 @@ return new class extends Migration
                 ->on('users')
                 ->restrictOnDelete();
             $table->string('image');
-            $table->unsignedBigInteger('likes')->nullable();
-            $table->boolean('is_published')->default(1);
+//            $table->unsignedBigInteger('likes')->nullable();
+            $table->boolean('is_published')->default(0);
             $table->timestamps();
 
 

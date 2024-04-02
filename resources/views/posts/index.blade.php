@@ -18,7 +18,7 @@
                             <div class="small text-muted">{{$post->created_at}}</div>
                             <h2 class="card-title text-nowrap overflow-hidden text-truncate">{{$post->title}}</h2>
                             <p class="card-text" style="height: 50px;  overflow: hidden;">{{$post->content}}</p>
-                            <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">Read post</a>
+                            <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">{{ __('messages.readPost') }}</a>
                         </div>
                     </div>
                 @endforeach
@@ -27,12 +27,12 @@
             <div class="col-lg-4">
                 <form action="{{route('posts.search')}}" method="get">
                     <div class="card mb-4">
-                        <div class="card-header">Search</div>
+                        <div class="card-header">{{ __('messages.search') }}</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="search" placeholder="Enter search term..."
+                                <input class="form-control" type="text" name="search" placeholder="{{ __('messages.search.word') }}"
                                        aria-label="Enter search term..." aria-describedby="button-search"/>
-                                <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+                                <button class="btn btn-primary" id="button-search" type="submit">{{ __('messages.search.button') }}</button>
                             </div>
                         </div>
                     </div>

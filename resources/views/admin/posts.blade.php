@@ -20,7 +20,7 @@
                 <th scope="row">{{$i+1}}</th>
                 <td>{{$posts[$i]->title}}</td>
                 <td>{{$posts[$i]->content}}</td>
-                <td>{{$posts[$i]->category->title}}</td>
+                <td>{{$posts[$i]->category->{'title_'. app()->getLocale()} }}</td>
                 <td>{{$posts[$i]->user->name}}</td>
                 <td>
                     <form action="

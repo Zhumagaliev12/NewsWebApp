@@ -103,8 +103,11 @@ class AdminController extends Controller
 
     public function storeCategory(Request $request)
     {
+//        dd($request);
         $validated =  $request->validate([
-            'title' => 'required|max:255',
+            'title_kz' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_ru' => 'required|max:255',
             'code' => 'required|max:255',
         ]);
 

@@ -8,7 +8,7 @@
                     <header class="mb-4">
                         <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
                         <div class="text-muted fst-italic mb-2">{{$post->created_at}}</div>
-                        <div class="text-muted fst-italic mb-2">Author: {{$post->user->name}}</div>
+                        <div class="text-muted fst-italic mb-2">{{__('messages.author')}} {{$post->user->name}}</div>
                         <a class="badge bg-secondary text-decoration-none link-light"
                            href="#!">{{$post->category->title}}</a>
                     </header>
@@ -32,11 +32,11 @@
 
                     @can('view', $post)
                         {{--                        @if(Auth::user()->id == $post->user_id)--}}
-                        <a href="{{route('posts.edit', $post->id)}} " class="btn btn-info mb-1">Edit</a>
+                        <a href="{{route('posts.edit', $post->id)}} " class="btn btn-info mb-1">{{ __('messages.edit') }}</a>
                         <form action="{{route('posts.destroy',$post->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger mb-2">Delete</button>
+                            <button type="submit" class="btn btn-danger mb-2">{{ __('messages.delete') }}</button>
                         </form>
                         {{--                        @endif--}}
                     @endcan
@@ -45,7 +45,7 @@
 
                 @if($avgRating != 0)
                     <h4 style=" color: {{$avgRating < 2.5 ? 'yellow' : 'green' }}" class="mt-3">
-                        Rating:{{$avgRating}}</h4>
+                        {{__('messages.rating')}}{{$avgRating}}</h4>
                 @endif
 
                 @auth()
@@ -60,7 +60,7 @@
                                 </option>
                             @endfor
                         </select>
-                        <button class="btn btn-outline-primary mx-2" type="submit">Rate</button>
+                        <button class="btn btn-outline-primary mx-2" type="submit">{{__('messages.rate')}}</button>
                     </form>
 
                 @endauth
@@ -77,12 +77,12 @@
                                         <input name="post_id" value="{{$post->id}}" type="hidden">
                                         <label for="comment" class="visually-hidden"></label>
                                         <textarea class="form-control" rows="3"
-                                                  placeholder="Join the discussion and leave a comment!"
+                                                  placeholder="{{__('messages.addComment')}}"
                                                   id="comment" name="content" minlength="1"
                                                   maxlength="255"></textarea>
                                     </div>
                                     <footer class="card-footer bg-transparent border-0 text-end">
-                                        <button type="submit" class="btn btn-primary btn-sm">Add comment
+                                        <button type="submit" class="btn btn-primary btn-sm">{{__('messages.addComment')}}
                                         </button>
                                     </footer>
                                 </form>
@@ -91,7 +91,7 @@
 
                         <div class="card-body">
                             <div class="container ">
-                                <h3>Comments:</h3>
+                                <h3>{{__('messages.comments')}}</h3>
                                 <div class="row d-flex justify-content-center ">
 
                                     @foreach($post->comments as $comment)
@@ -117,7 +117,7 @@
                                                             @if(Auth::user()->id == $comment->user_id)
                                                                 <button class="btn btn-danger mb-1"
                                                                         type="submit">
-                                                                    Delete
+                                                                    {{__('messages.delete')}}
                                                                 </button>
                                                             @endif
                                                         </form>

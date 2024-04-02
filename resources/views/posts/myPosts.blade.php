@@ -7,12 +7,12 @@
             <thead>
             <tr>
                 <th scope="col">№</th>
-                <th scope="col">Title</th>
-                <th scope="col">Content</th>
-                <th scope="col">Category</th>
-                <th scope="col">Is published</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Created at</th>
+                <th scope="col">{{__('messages.title')}}</th>
+                <th scope="col">{{__('messages.content')}}</th>
+                <th scope="col">{{__('messages.category')}}</th>
+                <th scope="col">{{__('messages.isPublished')}}</th>
+                <th scope="col">{{__('messages.rating')}}</th>
+                <th scope="col">{{__('messages.createdAt')}}</th>
             </tr>
             </thead>
             <tbody>
