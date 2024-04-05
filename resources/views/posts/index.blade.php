@@ -42,9 +42,9 @@
         </div>
     </div>
 
-    {{--    <div class="d-flex justify-content-center align-items-center w-75 p-3">--}}
-    {{--        {{$posts -> links()}}--}}
-    {{--    </div>--}}
+        <div class="d-flex justify-content-center align-items-center w-75 p-3">
+            {{$posts -> links()}}
+        </div>
 
 @endsection
 

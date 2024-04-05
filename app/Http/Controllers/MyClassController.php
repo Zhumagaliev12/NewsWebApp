@@ -24,11 +24,11 @@ class MyClassController extends Controller
             $allPosts = Post::where('title', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('content', 'LIKE', '%'.$request->search.'%')
                 ->where('is_published', 2)
-                ->get();
+                ->paginate(2);
         }
         else
         {
-            $allPosts = Post::where('is_published', 2)->get();
+            $allPosts = Post::where('is_published', 2)->paginate(2);;
         }
 
 //        $this->authorize('viewAny');
