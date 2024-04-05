@@ -10,9 +10,9 @@
                 </div>
             @endif
 
-            <div class="col-lg-8 d-flex flex-wrap">
+            <div class="col-lg-8 d-flex flex-wrap" >
                 @foreach($posts as $post)
-                    <div class="card col-lg-5 mx-4 mb-4">
+                    <div class="card col-lg-5 mx-4 mb-4" style="background-color: #dae4f5">
                         <img class="card-img-top h-100" src="{{$post->image}}"/>
                         <div class="card-body">
                             <div class="small text-muted">{{$post->created_at}}</div>

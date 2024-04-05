@@ -9,7 +9,7 @@
                     @method('PUT')
 
                     <div class="form-group mt-2">
-                        <label for="titleInput">Title</label>
+                        <label for="titleInput">{{__('messages.title')}}</label>
                         <input type="text" class="form-control" id="titleInput" name="title" value="{{$post->title}}">
                         @error('title')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="contentInput">Content</label>
+                        <label for="contentInput">{{__('messages.content')}}</label>
                         <textarea class="form-control" id="contentInput" rows="3" name="content">{{$post->content}}</textarea>
                         @error('content')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -27,10 +27,10 @@
                     <input type="hidden" value="1" name="is_published">
 
                     <div class="form-group mt-2">
-                        <label for="categoryInput">Category</label>
+                        <label for="categoryInput">{{__('messages.category')}}</label>
                         <select class="form-control" name="category_id" id="categoryInput">
                             @foreach($categories as $category)
-                                <option @if($category->id == $post->category_id) selected @endif value="{{$category->id}}">{{$category->title}}</option>
+                                <option @if($category->id == $post->category_id) selected @endif value="{{$category->id}}">{{$category->{'title_'. app()->getLocale()} }}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="fileInput">Image</label>
+                        <label for="fileInput">{{__('messages.image')}}</label>
                         <input type="file" class="form-control" id="fileInput" name="image">
                         @error('image')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -47,13 +47,13 @@
                     </div>
                     @if($post->image)
                         <div class="form-group mt-2">
-                            <label for="currentImage">Current Image</label><br>
+                            <label for="currentImage">{{__('messages.currentImage')}}</label><br>
                             <img src="{{ $post->image }}" id="currentImage" alt="Current Image" style="max-width: 300px;">
                         </div>
                     @endif
 
                     <div class="form-group mt-2">
-                        <button type="submit" class="btn btn-info">Edit post</button>
+                        <button type="submit" class="btn btn-info">{{__('messages.edit')}}</button>
                     </div>
 
                 </form>

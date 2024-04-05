@@ -13,6 +13,7 @@
                 <th scope="col">{{__('messages.isPublished')}}</th>
                 <th scope="col">{{__('messages.rating')}}</th>
                 <th scope="col">{{__('messages.createdAt')}}</th>
+                <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -35,11 +36,21 @@
                 <tr>
                     <th scope="row">{{ $i+1 }}</th>
                     <td>{{ $myPosts[$i]->title }}</td>
-                    <td>{{--class="overflow-auto vh-25"--}} {{ $myPosts[$i]->content }}</td>
+                    <td>
+                        <div style="height: 95px;  overflow: hidden;">
+                            {{--class="overflow-auto vh-25"--}}
+                            {{ $myPosts[$i]->content }}
+                        </div>
+                    </td>
                     <td>{{ $myPosts[$i]->category->title }}</td>
                     <td class="{{ $myPosts[$i]->is_published == 1 ? 'bg-warning' : 'bg-success' }}">{{ $myPosts[$i]->is_published == 1 ? 'No' : 'Yes' }}</td>
                     <td>{{ $avgRating == 0 ? 'Not rated' : $avgRating }}</td>
                     <td>{{ $myPosts[$i]->created_at }}</td>
+                    <td>
+                        <a class="nav-link " href="{{route('posts.show', $myPosts[$i]->id) }}">
+                            <button class="btn btn-success">{{ __('messages.readPost') }}</button>
+                        </a>
+                    </td>
                 </tr>
             @endfor
             </tbody>

@@ -16,6 +16,7 @@ return [
     'content' => 'Content',
     'category' => 'Category',
     'image' => 'Image',
+    'currentImage' => 'Current image',
     'enterTitle' => 'Enter title ...',
     'enterContent' => 'Enter content ...',
     'readPost' => 'Read post',
@@ -29,4 +30,5 @@ return [
     'isPublished' => 'Is published',
     'createdAt' => 'Created at',
     'logout' => 'Logout',
+    'action' => 'Action',
 ];

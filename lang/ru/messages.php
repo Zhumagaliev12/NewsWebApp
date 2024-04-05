@@ -16,6 +16,7 @@ return [
     'content' => 'Содержание',
     'category' => 'Категория',
     'image' => 'Изображения',
+    'currentImage' => 'Настоящее изображение',
     'enterTitle' => 'Введите тему ...',
     'enterContent' => 'Введите содержание ...',
     'readPost' => 'Читать пост',
@@ -29,4 +30,5 @@ return [
     'isPublished' => 'Опубликован',
     'createdAt' => 'Создано',
     'logout' => 'Выйти',
+    'action' => 'Действия',
 ];

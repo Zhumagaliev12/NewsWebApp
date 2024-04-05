@@ -16,6 +16,7 @@ return [
     'content' => 'Мазмұны',
     'category' => 'Санаты',
     'image' => 'Сурет',
+    'currentImage' => 'Қазіргі сурет',
     'enterTitle' => 'Тақырыпты енгізіңіз ...',
     'enterContent' => 'Мазмұнын енгізіңіз ...',
     'readPost' => 'Постты оқу',
@@ -29,5 +30,5 @@ return [
     'isPublished' => 'Жарияланды',
     'createdAt' => 'Құрылды',
     'logout' => 'Шығу',
-
+    'action' => 'Әрекет',
 ];

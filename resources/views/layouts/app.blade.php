@@ -16,9 +16,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body >
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light sticky-top shadow-sm" style="background-color: #b6b8bf">
         <div class="container">
             <a class="navbar-brand" href="{{route('posts.index')}}">
                 {{ config('app.name', 'Laravel') }}
