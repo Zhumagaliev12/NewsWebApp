@@ -42,4 +42,10 @@ class LoginController extends Controller
 
         return redirect()->route('posts.index');
     }
+
+    public function profile()
+    {
+        return redirect()->route('posts.profile');
+    }
+
 }

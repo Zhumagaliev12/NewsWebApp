@@ -31,4 +31,5 @@ return [
     'createdAt' => 'Created at',
     'logout' => 'Logout',
     'action' => 'Action',
+    'profile' => 'My profile',
 ];

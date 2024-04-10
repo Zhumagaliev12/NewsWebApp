@@ -31,4 +31,5 @@ return [
     'createdAt' => 'Құрылды',
     'logout' => 'Шығу',
     'action' => 'Әрекет',
+    'profile' => 'Менің профилім',
 ];

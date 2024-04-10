@@ -31,4 +31,5 @@ return [
     'createdAt' => 'Создано',
     'logout' => 'Выйти',
     'action' => 'Действия',
+    'profile' => 'Мой профиль',
 ];

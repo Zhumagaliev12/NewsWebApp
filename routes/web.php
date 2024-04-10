@@ -13,6 +13,8 @@ Route::get('/lang/{lang}', [LangController::class, 'switchLang'])->name('switch.
 
 Route::middleware('auth')->group(function (){
     Route::resource('posts', MyClassController::class)->except('index', 'show');
+
+    Route::get('/profile', [App\Http\Controllers\Auth2\LoginController::class, 'profile'])->name('profile');
     Route::post('/logout', [App\Http\Controllers\Auth2\LoginController::class, 'logout'])->name('logout');
 
     Route::get('posts/category/{category}', 'App\Http\Controllers\MyClassController@postsByCategory')->name('posts.category');
