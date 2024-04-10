@@ -32,4 +32,6 @@ return [
     'logout' => 'Logout',
     'action' => 'Action',
     'profile' => 'My profile',
+    'name' => 'Name',
+    'confirmPassword' => 'Confirm Password',
 ];

@@ -45,7 +45,10 @@ class LoginController extends Controller
 
     public function profile()
     {
-        return redirect()->route('posts.profile');
+        $user = Auth::user();
+        $posts = $user->posts()->get();
+        $role = $user->role;
+        return view('posts.profile', ['user'=>$user, 'posts' => $posts, 'role' => $role]);
     }
 
 }

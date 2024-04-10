@@ -32,4 +32,6 @@ return [
     'logout' => 'Выйти',
     'action' => 'Действия',
     'profile' => 'Мой профиль',
+    'name' => 'Имя',
+    'confirmPassword' => 'Подтвердить пароль',
 ];

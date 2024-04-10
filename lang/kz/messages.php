@@ -32,4 +32,6 @@ return [
     'logout' => 'Шығу',
     'action' => 'Әрекет',
     'profile' => 'Менің профилім',
+    'name' => 'Есім',
+    'confirmPassword' => 'Құпия сөзді растау',
 ];

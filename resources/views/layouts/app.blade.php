@@ -25,7 +25,7 @@
             </a>
             @auth()
                 @foreach(App\Models\Category::all() as $cat)
-                    <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{$cat->{'title_'.app()->getLocale()} }}</a>
+                    <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{'| '.$cat->{'title_'.app()->getLocale()}.' |'}}</a>
                 @endforeach
                 @if(Auth::user()->role->title_en == 'Admin')
                     <a class="nav-link mx-2 " href="{{route('admin.users')}}">
@@ -107,13 +107,15 @@
                                     {{ __('messages.logout') }}
                                 </a>
 
+                                <form id="profile-form" action="{{ route('profile') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
 
-                                <form id="profile-form" action="{{ route('profile') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+
 
                             </div>
 
