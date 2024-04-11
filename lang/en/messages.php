@@ -34,4 +34,10 @@ return [
     'profile' => 'My profile',
     'name' => 'Name',
     'confirmPassword' => 'Confirm Password',
+    'fullName' => 'Full Name',
+    'phone' => 'Phone',
+    'address' => 'Address',
+    'posts' => 'Posts',
+    'follow' => 'Follow',
+    'message' => 'Message',
 ];

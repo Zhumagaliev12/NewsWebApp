@@ -41,7 +41,7 @@ class MyClassController extends Controller
 
     public function postsByCategory(Category $category)
     {
-        $posts = $category->posts()->where('is_published', 2)->get();
+        $posts = $category->posts()->where('is_published', 2)->paginate(2);
         return view('posts.index', ['posts' => $posts, 'categories'=>Category::all()]);
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth2;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +50,9 @@ class LoginController extends Controller
         $user = Auth::user();
         $posts = $user->posts()->get();
         $role = $user->role;
-        return view('posts.profile', ['user'=>$user, 'posts' => $posts, 'role' => $role]);
+        $category = Category::all();
+
+        return view('posts.profile', ['user'=>$user, 'posts' => $posts, 'role' => $role, 'categories' => $category]);
     }
 
 }
