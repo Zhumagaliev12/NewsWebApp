@@ -107,7 +107,7 @@
                                     {{ __('messages.logout') }}
                                 </a>
 
-                                <form id="profile-form" action="{{ route('profile') }}" method="POST" class="d-none">
+                                <form id="profile-form" action="{{ route('profile') }}" method="GET" class="d-none">
                                     @csrf
                                 </form>
 
