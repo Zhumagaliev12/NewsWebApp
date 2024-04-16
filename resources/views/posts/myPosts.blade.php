@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container">
-        <h4>POSTS:</h4>
+        <h4>{{__('messages.myPosts')}}:</h4>
         <table class="table">
             <thead>
             <tr>
@@ -43,7 +43,7 @@
                         </div>
                     </td>
                     <td>{{ $myPosts[$i]->category->title }}</td>
-                    <td class="{{ $myPosts[$i]->is_published == 1 ? 'bg-warning' : 'bg-success' }}">{{ $myPosts[$i]->is_published == 1 ? 'No' : 'Yes' }}</td>
+                    <td class="{{ $myPosts[$i]->is_published == 1 ? 'bg-warning' : 'bg-success' }}">{{ $myPosts[$i]->is_published == 1 ? __('messages.no') : __('messages.yes') }} </td>
                     <td>{{ $avgRating == 0 ? 'Not rated' : $avgRating }}</td>
                     <td>{{ $myPosts[$i]->created_at }}</td>
                     <td>

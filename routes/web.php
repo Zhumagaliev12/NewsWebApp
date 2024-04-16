@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function (){
     Route::post('comments/destroy/{id}', 'App\Http\Controllers\CommentController@commentDestroy')->name('comment.destroy');
     Route::post('posts/{post}/rate', 'App\Http\Controllers\MyClassController@rate')->name('posts.rate');
     Route::get('posts/myPosts', 'App\Http\Controllers\MyClassController@showMyPosts')->name('posts.showMyPosts');
+    Route::get('posts/myComments', 'App\Http\Controllers\MyClassController@showMyComments')->name('posts.showMyComments');
 
     Route::get('posts/search', [MyClassController::class, 'index'])->name('posts.search');
 

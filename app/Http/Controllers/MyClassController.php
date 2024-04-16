@@ -171,11 +171,15 @@ class MyClassController extends Controller
 ////        dd($myPosts);
 //        dd($rating[0]->pivot->rating);
 
-//
-
         return view('posts.myPosts', ['myPosts' => $myPosts]);
 
+    }
 
+    public function showMyComments()
+    {
+        $myComments = Auth::user()->comments()->get();
+
+        return view('posts.myComments', ['myComments' => $myComments]);
     }
 
 }

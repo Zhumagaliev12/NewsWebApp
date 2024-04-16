@@ -25,7 +25,7 @@
             </a>
             @auth()
                 @foreach(App\Models\Category::all() as $cat)
-                    <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{'| '.$cat->{'title_'.app()->getLocale()}.' |'}}</a>
+                    <a class="nav-link mx-2" href="{{route('posts.category', $cat->id)}}">{{ $cat->{'title_'.app()->getLocale()} }}</a>
                 @endforeach
                 @if(Auth::user()->role->title_en == 'Admin')
                     <a class="nav-link mx-2 " href="{{route('admin.users')}}">
@@ -56,8 +56,8 @@
                     @auth()
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
                                                 href="{{ route('posts.create') }}">{{ __('messages.createPost') }}</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                href="{{route('posts.showMyPosts')}}">{{ __('messages.myPosts') }}</a></li>
+{{--                        <li class="nav-item"><a class="nav-link active" aria-current="page"--}}
+{{--                                                href="{{route('posts.showMyPosts')}}">{{ __('messages.myPosts') }}</a></li>--}}
                     @endauth
 
                     <li class="nav-item dropdown">
