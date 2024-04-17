@@ -13,7 +13,9 @@
         <thead>
         <tr>
             <th scope="col">№</th>
-            <th scope="col">Title</th>
+            <th scope="col">Title Kz</th>
+            <th scope="col">Title En</th>
+            <th scope="col">Title Ru</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -21,7 +23,9 @@
         @for($i=0; $i<count($roles); $i++)
             <tr>
                 <th scope="row">{{$i+1}}</th>
-                <td>{{$roles[$i]->name}}</td>
+                <td>{{$roles[$i]->title_kz}}</td>
+                <td>{{$roles[$i]->title_en}}</td>
+                <td>{{$roles[$i]->title_ru}}</td>
 
                 <td>
                     <form action="{{route('admin.role.destroy', $roles[$i]->id)}}" method="post">
